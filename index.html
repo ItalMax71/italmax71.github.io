@@ -1,309 +1,102 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b2a3a" />
-  <title>Assistenza Caldaie Italia – Contatti rapidi</title>
-  <meta name="description" content="Contatta subito Assistenza Caldaie Italia: chiama o scrivi su WhatsApp per caldaia o climatizzatore." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    :root{
-      --bg: #0b2a3a;
-      --panel: rgba(255,255,255,0.92);
-      --text: #0b1f2a;
-      --muted: #2c3e50;
-      --btn: #0b2a3a;
-      --btnText: #ffffff;
-      --wa: #128C7E;
-      --shadow: 0 14px 40px rgba(0,0,0,0.35);
-      --radius: 18px;
-    }
+<title>Assistenza Immediata – Max Impianti</title>
 
-    *{
-      box-sizing: border-box;
-    }
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b2a3a;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+}
 
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      min-height: 100svh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 20px;
-      background:
-        linear-gradient(120deg, rgba(11,42,58,0.85), rgba(11,42,58,0.55)),
-        url("assets/expotrack.jpg") center/cover no-repeat fixed;
-    }
+.container{
+  text-align:center;
+  padding:20px;
+  max-width:500px;
+}
 
-    .wrap{
-      width: min(680px, 100%);
-    }
+.logo{
+  width:200px;
+  margin-bottom:20px;
+}
 
-    .card{
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      backdrop-filter: blur(6px);
-    }
+h1{
+  font-size:26px;
+  margin-bottom:10px;
+}
 
-    .brand{
-      display:flex;
-      gap: 14px;
-      align-items:center;
-      margin-bottom: 12px;
-    }
+.subtitle{
+  font-size:18px;
+  margin-bottom:25px;
+  color:#cfd8dc;
+}
 
-    .logo-img{
-      width: 140px;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      flex: 0 0 auto;
-    }
+.btn{
+  display:block;
+  width:100%;
+  padding:18px;
+  margin-top:12px;
+  border-radius:12px;
+  text-decoration:none;
+  font-size:20px;
+  font-weight:bold;
+}
 
-    h1{
-      font-size: clamp(22px, 3.2vw, 30px);
-      margin: 0;
-      line-height: 1.15;
-    }
+.btn-call{
+  background:white;
+  color:#0b2a3a;
+}
 
-    .subtitle{
-      margin: 6px 0 0 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.35;
-    }
+.btn-wa{
+  background:#25D366;
+  color:white;
+}
 
-    .thanks{
-      margin: 16px 0 18px;
-      font-size: 18px;
-      line-height: 1.4;
-      color: var(--text);
-    }
-
-    .grid{
-      display:grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      text-decoration:none;
-      border-radius: 16px;
-      padding: 18px 16px;
-      font-size: 20px;
-      font-weight: 750;
-      border: 0;
-      color: var(--btnText);
-      background: var(--btn);
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .btn:focus{
-      outline: 4px solid rgba(23, 107, 138, 0.35);
-      outline-offset: 2px;
-    }
-
-    .btn-call{
-      background: #0b2a3a;
-    }
-
-    .btn-wa{
-      background: var(--wa);
-    }
-
-    .btn-wa.secondary{
-      background: #0f6f64;
-    }
-
-    .small{
-      margin-top: 14px;
-      font-size: 14px;
-      color: rgba(11,31,42,0.85);
-      line-height: 1.4;
-    }
-
-    .small strong{
-      font-weight: 800;
-    }
-
-    .footer{
-      margin-top: 18px;
-      padding-top: 14px;
-      text-align: center;
-      color: rgba(255,255,255,0.95);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 640px){
-      .brand{
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .logo-img{
-        width: 180px;
-      }
-
-      .btn{
-        font-size: 18px;
-        padding: 16px 14px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *{
-        scroll-behavior:auto !important;
-      }
-    }
-  </style>
+.link{
+  margin-top:20px;
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  font-size:15px;
+  opacity:0.8;
+}
+</style>
 </head>
 
 <body>
-  <main class="wrap" role="main">
-    <section class="card" aria-label="Contatti rapidi">
-      <div class="brand">
-        <img
-          src="assets/logo_max_impianti_transparent.png"
-          alt="Logo Max Impianti"
-          class="logo-img"
-        />
-        <div>
-          <h1>Assistenza Caldaie Italia</h1>
-          <p class="subtitle">Manutenzione • Riparazioni • Assistenza rapida</p>
-        </div>
-      </div>
 
-      <p class="thanks">
-        Grazie per aver visitato la pagina.<br>
-        Per parlare subito con noi, scegli un’opzione:
-      </p>
-<div class="card">
-  <h2>Verifica copertura zona</h2>
+<div class="container">
 
-  <p>Inserisci il tuo comune:</p>
+  <img src="assets/logo_max_impianti_transparent.png" class="logo">
 
-  <input id="cityInput" placeholder="Es. Saronno" style="
-    width:100%;
-    padding:12px;
-    border-radius:8px;
-    border:1px solid #ccc;
-  ">
+  <h1>Assistenza rapida impianti</h1>
 
-  <button onclick="checkCity()" class="btn btn-call">
-    Verifica
-  </button>
+  <div class="subtitle">
+    Intervento e supporto immediato
+  </div>
 
-  <p id="result" style="margin-top:10px; font-weight:bold;"></p>
+  <a href="tel:+390282197560" class="btn btn-call">
+    ☎️ Chiama ora
+  </a>
+
+  <a href="https://wa.me/390282197560" class="btn btn-wa">
+    WhatsApp
+  </a>
+
+  <a href="offerte.html" class="link">
+    Scopri le offerte manutenzione →
+  </a>
+
 </div>
-      <div class="grid">
-        <a class="btn btn-call" href="tel:+390282197560" aria-label="Chiama ora lo 02 8219 7560">
-          ☎️ <span>CHIAMA ORA – 02 8219 7560</span>
-        </a>
 
-        <a class="btn btn-wa" target="_blank" rel="noopener"
-           href="https://wa.me/390282197560?text=🔥%20Buongiorno%2C%20richiedo%20assistenza%20per%20la%20CALDAIA.%0A%0AComune%3A%20____%0AMarca%3A%20____%0AModello%3A%20____%0AProblema%3A%20____%0A%0AGrazie."
-           aria-label="Invia messaggio WhatsApp per assistenza caldaia">
-          🔥 <span>WhatsApp – ASSISTENZA CALDAIA</span>
-        </a>
-
-        <a class="btn btn-wa secondary" target="_blank" rel="noopener"
-           href="https://wa.me/390282197560?text=Buongiorno%2C%20richiedo%20assistenza%20per%20il%20CLIMATIZZATORE.%0A%0AComune%3A%20____%0AMarca%3A%20____%0AModello%3A%20____%0AProblema%3A%20____%0A%0AGrazie."
-           aria-label="Invia messaggio WhatsApp per assistenza climatizzatore">
-          ❄️ <span>WhatsApp – ASSISTENZA CLIMATIZZATORE</span>
-        </a>
-        <a href="offerte.html" style="
-display:block;
-text-align:center;
-margin-top:15px;
-font-weight:bold;
-color:#0b2a3a;
-">
-Scopri le offerte manutenzione →
-</a>
-      </div>
-
-      <p class="small">
-        <strong>Nota:</strong> se preferisci, puoi anche inviare una foto del libretto o della targhetta (marca/modello).
-      </p>
-    </section>
-
-    <div class="footer">
-      <strong>Max Impianti di Mian Massimiliano</strong><br>
-      P. IVA 02518330960<br>
-      Assistenza e manutenzione caldaie e climatizzatori<br><br>
-      assistenzacaldaieitalia.it
-    </div>
-  </main>
-  <script>
-async function checkCity() {
-  const city = document.getElementById("cityInput").value;
-  const result = document.getElementById("result");
-
-  if (!city) {
-    result.innerText = "Inserisci un comune";
-    return;
-  }
-
-  try {
-    // Geocoding tramite OpenStreetMap
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&q=${city}`
-    );
-    const data = await response.json();
-
-    if (data.length === 0) {
-      result.innerText = "Comune non trovato";
-      return;
-    }
-
-    const lat = data[0].lat;
-    const lon = data[0].lon;
-
-    // Coordinate Lazzate
-    const lazzateLat = 45.672;
-    const lazzateLon = 9.082;
-
-    const distance = getDistance(lat, lon, lazzateLat, lazzateLon);
-
-    if (distance <= 15) {
-      result.innerText = `✅ Sei nell'area operativa (${distance.toFixed(1)} km)`;
-      result.style.color = "green";
-    } else {
-      result.innerText = `❌ Fuori area (${distance.toFixed(1)} km)`;
-      result.style.color = "red";
-    }
-
-  } catch (error) {
-    result.innerText = "Errore nella verifica";
-  }
-}
-
-function getDistance(lat1, lon1, lat2, lon2) {
-  const R = 6371;
-  const dLat = (lat2 - lat1) * Math.PI / 180;
-  const dLon = (lon2 - lon1) * Math.PI / 180;
-
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * Math.PI / 180) *
-    Math.cos(lat2 * Math.PI / 180) *
-    Math.sin(dLon / 2) *
-    Math.sin(dLon / 2);
-
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
-}
-</script>
 </body>
 </html>
