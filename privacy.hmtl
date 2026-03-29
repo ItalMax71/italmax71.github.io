@@ -1,1 +1,48 @@
 
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy – Max Impianti</title>
+
+<style>
+body{font-family:Arial;margin:0;background:#f4f7fa;color:#0b2a3a;}
+.container{max-width:900px;margin:auto;padding:20px;}
+.card{background:white;padding:25px;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,0.1);}
+a{color:#0b2a3a;}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="card">
+
+<h1>Informativa Privacy</h1>
+
+<p><strong>Titolare del trattamento:</strong><br>
+Max Impianti di Mian Massimiliano</p>
+
+<p>I dati personali forniti tramite il form di prenotazione sono trattati
+esclusivamente per:</p>
+
+<ul>
+<li>gestione della richiesta di assistenza</li>
+<li>contatto cliente</li>
+<li>organizzazione intervento tecnico</li>
+</ul>
+
+<p>I dati non saranno ceduti a terzi e saranno conservati per il tempo necessario
+alla gestione del servizio.</p>
+
+<p>L’utente può richiedere modifica o cancellazione dei dati scrivendo a:
+<strong>[INSERISCI EMAIL]</strong></p>
+
+<p>Il conferimento dei dati è facoltativo ma necessario per usufruire del servizio.</p>
+
+<p><a href="prenotazione.html">← Torna alla prenotazione</a></p>
+
+</div>
+</div>
+</body>
+</html>
