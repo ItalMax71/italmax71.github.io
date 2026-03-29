@@ -1,1 +1,437 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prenotazione online – Max Impianti</title>
 
+  <style>
+    :root{
+      --navy:#0b2a3a;
+      --navy2:#173f52;
+      --text:#0b1f2a;
+      --muted:#586b75;
+      --bg:#f4f7fa;
+      --card:#ffffff;
+      --line:#d7e0e5;
+      --okBg:#e9f7ee;
+      --okText:#1d6a35;
+      --koBg:#fdecec;
+      --koText:#a32020;
+      --gold:#fff4cc;
+      --shadow:0 10px 25px rgba(0,0,0,0.10);
+      --radius:14px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .container{
+      max-width:980px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:24px;
+      border-radius:var(--radius);
+      margin-bottom:20px;
+      box-shadow:var(--shadow);
+    }
+
+    h1,h2,h3{
+      margin-top:0;
+    }
+
+    .lead{
+      font-size:18px;
+      color:#445;
+      line-height:1.5;
+    }
+
+    .muted{
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .highlight{
+      background:var(--gold);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .full{
+      grid-column:1 / -1;
+    }
+
+    label{
+      display:block;
+      font-weight:bold;
+      margin-bottom:6px;
+    }
+
+    input, select, textarea{
+      width:100%;
+      padding:14px;
+      border:1px solid #cfd8dc;
+      border-radius:10px;
+      font-size:16px;
+      font-family:inherit;
+      background:#fff;
+    }
+
+    textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+
+    .btn{
+      display:inline-block;
+      text-align:center;
+      padding:15px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      border:none;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    .btn-primary{
+      background:var(--navy);
+      color:#fff;
+    }
+
+    .btn-secondary{
+      background:#eee;
+      color:var(--navy);
+    }
+
+    .btn-pay{
+      background:#128C7E;
+      color:#fff;
+      width:100%;
+      padding:18px;
+      font-size:18px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .result{
+      margin-top:12px;
+      padding:12px;
+      border-radius:10px;
+      font-weight:bold;
+      display:none;
+    }
+
+    .result.ok{
+      display:block;
+      background:var(--okBg);
+      color:var(--okText);
+    }
+
+    .result.ko{
+      display:block;
+      background:var(--koBg);
+      color:var(--koText);
+    }
+
+    .note{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .summary{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:16px;
+      background:#fafcfd;
+    }
+
+    .summary-row{
+      padding:8px 0;
+      border-bottom:1px solid #e7eef2;
+    }
+
+    .summary-row:last-child{
+      border-bottom:none;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .checkbox{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-top:6px;
+    }
+
+    .checkbox input{
+      width:auto;
+      margin-top:4px;
+      transform:scale(1.15);
+    }
+
+    .top-link{
+      display:inline-block;
+      margin-bottom:14px;
+      color:var(--navy);
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    @media (max-width: 700px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card">
+    <a href="offerte.html" class="top-link">← Torna alla pagina offerte</a>
+    <h1>Prenotazione online manutenzione</h1>
+    <p class="lead">
+      Compila il form per richiedere la prenotazione online del servizio.
+      Dopo la verifica dei dati potrai procedere al pagamento dell’acconto di <strong>€ 50,00</strong>.
+    </p>
+    <p class="muted">
+      Offerta valida per le zone operative entro circa <strong>20 km da Lazzate</strong>.
+    </p>
+  </div>
+
+  <div class="card highlight">
+    <h2>Condizioni sintetiche</h2>
+    <p class="muted">
+      La promozione web prevede uno <strong>sconto del 10%</strong> sul servizio di manutenzione,
+      con conferma della prenotazione tramite <strong>acconto online di € 50,00</strong>.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Dati cliente e impianto</h2>
+
+    <form id="bookingForm">
+      <div class="grid">
+        <div>
+          <label for="nome">Nome e cognome / Ragione sociale *</label>
+          <input id="nome" name="nome" required>
+        </div>
+
+        <div>
+          <label for="cfiva">Codice fiscale / P. IVA *</label>
+          <input id="cfiva" name="cfiva" required>
+        </div>
+
+        <div>
+          <label for="telefono">Telefono *</label>
+          <input id="telefono" name="telefono" required>
+        </div>
+
+        <div>
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+
+        <div>
+          <label for="comune">Comune *</label>
+          <input id="comune" name="comune" placeholder="Es. Saronno" required>
+        </div>
+
+        <div>
+          <label for="cap">CAP</label>
+          <input id="cap" name="cap" placeholder="Es. 21047">
+        </div>
+
+        <div class="full">
+          <label for="indirizzo">Indirizzo impianto *</label>
+          <input id="indirizzo" name="indirizzo" placeholder="Via, numero civico" required>
+        </div>
+
+        <div>
+          <label for="servizio">Servizio richiesto *</label>
+          <select id="servizio" name="servizio" required>
+            <option value="">Seleziona</option>
+            <option>Manutenzione caldaia</option>
+            <option>Assistenza climatizzatore</option>
+            <option>Manutenzione climatizzatore</option>
+            <option>Richiesta sopralluogo</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="curit">Codice CURIT / Tracciabilità impianto</label>
+          <input id="curit" name="curit">
+        </div>
+
+        <div>
+          <label for="marca">Marca impianto</label>
+          <input id="marca" name="marca">
+        </div>
+
+        <div>
+          <label for="modello">Modello impianto</label>
+          <input id="modello" name="modello">
+        </div>
+
+        <div class="full">
+          <label for="note">Note utili</label>
+          <textarea id="note" name="note" placeholder="Descrivi eventuali dettagli utili"></textarea>
+        </div>
+
+        <div class="full">
+          <div class="checkbox">
+            <input type="checkbox" id="consenso" required>
+            <label for="consenso" style="font-weight:normal; margin:0;">
+              Confermo di aver letto le informazioni della pagina e autorizzo il trattamento dei dati
+              inseriti ai fini della gestione della richiesta di prenotazione. *
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-primary" onclick="prepareBooking()">
+          Verifica dati e procedi
+        </button>
+        <a href="offerte.html" class="btn btn-secondary">Annulla</a>
+      </div>
+
+      <div id="zoneResult" class="result"></div>
+    </form>
+  </div>
+
+  <div id="summaryCard" class="card hidden">
+    <h2>Riepilogo prenotazione</h2>
+    <div class="summary" id="summaryBox"></div>
+
+    <p class="note" style="margin-top:14px;">
+      Se i dati sono corretti, puoi procedere al pagamento dell’acconto.
+      Sostituisci il link del pulsante qui sotto con il tuo link reale di pagamento online.
+    </p>
+
+    <a id="payButton"
+       href="PAYMENT_LINK_URL"
+       target="_blank"
+       rel="noopener"
+       class="btn btn-pay">
+      Procedi al pagamento dell’acconto di € 50,00
+    </a>
+  </div>
+
+</div>
+
+<script>
+function normalizeText(str) {
+  return str.toLowerCase().trim();
+}
+
+function prepareBooking() {
+  const comuniCoperti = [
+    "lazzate","misinto","cogliate","ceriano laghetto","solaro","limbiate",
+    "bovisio masciago","cesano maderno","seveso","meda","barlassina",
+    "lentate sul seveso","saronno","rovello porro","rovellasca","turate",
+    "uboldo","gerenzano","caronno pertusella","origgio","lomazzo","cabiate",
+    "mariano comense","giussano","varedo","nova milanese","desio",
+    "senago","garbagnate milanese","cesate","carimate","novedrate",
+    "bregnano","cirimido","cislago","appiano gentile","lurago marinone"
+  ];
+
+  const form = document.getElementById("bookingForm");
+  const zoneResult = document.getElementById("zoneResult");
+  const summaryCard = document.getElementById("summaryCard");
+  const summaryBox = document.getElementById("summaryBox");
+
+  const nome = document.getElementById("nome").value.trim();
+  const cfiva = document.getElementById("cfiva").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const comune = document.getElementById("comune").value.trim();
+  const cap = document.getElementById("cap").value.trim();
+  const indirizzo = document.getElementById("indirizzo").value.trim();
+  const servizio = document.getElementById("servizio").value.trim();
+  const curit = document.getElementById("curit").value.trim();
+  const marca = document.getElementById("marca").value.trim();
+  const modello = document.getElementById("modello").value.trim();
+  const note = document.getElementById("note").value.trim();
+  const consenso = document.getElementById("consenso").checked;
+
+  if (!nome || !cfiva || !telefono || !email || !comune || !indirizzo || !servizio || !consenso) {
+    zoneResult.className = "result ko";
+    zoneResult.textContent = "Compila tutti i campi obbligatori e conferma il consenso prima di procedere.";
+    summaryCard.classList.add("hidden");
+    return;
+  }
+
+  const comuneNorm = normalizeText(comune);
+
+  if (!comuniCoperti.includes(comuneNorm)) {
+    zoneResult.className = "result ko";
+    zoneResult.textContent = "Il comune indicato non risulta nell’area operativa standard. Contattaci prima di procedere al pagamento.";
+    summaryCard.classList.add("hidden");
+    return;
+  }
+
+  zoneResult.className = "result ok";
+  zoneResult.textContent = "Comune verificato. Puoi procedere con la prenotazione online.";
+
+  const prenotazione = {
+    nome, cfiva, telefono, email, comune, cap, indirizzo,
+    servizio, curit, marca, modello, note
+  };
+
+  localStorage.setItem("prenotazione_max_impianti", JSON.stringify(prenotazione));
+
+  summaryBox.innerHTML = `
+    <div class="summary-row"><strong>Cliente:</strong> ${escapeHtml(nome)}</div>
+    <div class="summary-row"><strong>Codice fiscale / P. IVA:</strong> ${escapeHtml(cfiva)}</div>
+    <div class="summary-row"><strong>Telefono:</strong> ${escapeHtml(telefono)}</div>
+    <div class="summary-row"><strong>Email:</strong> ${escapeHtml(email)}</div>
+    <div class="summary-row"><strong>Comune:</strong> ${escapeHtml(comune)}</div>
+    <div class="summary-row"><strong>CAP:</strong> ${escapeHtml(cap || "-")}</div>
+    <div class="summary-row"><strong>Indirizzo impianto:</strong> ${escapeHtml(indirizzo)}</div>
+    <div class="summary-row"><strong>Servizio:</strong> ${escapeHtml(servizio)}</div>
+    <div class="summary-row"><strong>Codice CURIT:</strong> ${escapeHtml(curit || "-")}</div>
+    <div class="summary-row"><strong>Marca / Modello:</strong> ${escapeHtml((marca || "-") + " / " + (modello || "-"))}</div>
+    <div class="summary-row"><strong>Note:</strong> ${escapeHtml(note || "-")}</div>
+  `;
+
+  summaryCard.classList.remove("hidden");
+  summaryCard.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+</script>
+
+</body>
+</html>
