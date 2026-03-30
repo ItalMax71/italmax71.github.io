@@ -391,7 +391,7 @@
 
     <a
       id="payButton"
-      href="https://mypos.com/@max-impianti
+      href="https://pay.mypos.com/IL_TUO_LINK"
       target="_blank"
       rel="noopener"
       class="btn-pay">
@@ -409,213 +409,228 @@
 </div>
 
 <script>
-const BACKEND_URL = "https://script.google.com/macros/s/AKfycbygHy-5i_fQLLYRLMp-KdMJ_ptNeu10E2CoBDmu-tly8Axhy95wbSUtM7ZaJf0oXAGD/exec";
+  // SOSTITUISCI QUI CON IL TUO LINK /exec ATTUALE
+  const BACKEND_URL = "https://script.google.com/macros/s/AKfycbygHy-5i_fQLLYRLMp-KdMJ_ptNeu10E2CoBDmu-tly8Axhy95wbSUtM7ZaJf0oXAGD/exec";
 
-function normalizeText(str) {
-  return str.toLowerCase().trim();
-}
-document.getElementById("servizio").addEventListener("change", function() {
-  const servizio = this.value;
-  const box = document.getElementById("importoBox");
-
-  if (servizio === "Manutenzione ordinaria caldaia") {
-    box.innerHTML = `
-      <div class="price-title">Riepilogo economico</div>
-      <strong>Servizio:</strong> Manutenzione ordinaria caldaia con analisi fumi e tariffa CURIT.<br>
-      <strong>Prezzo base:</strong> €110,00<br>
-      <strong>Sconto web 10%:</strong> - €11,00<br>
-      <strong>Totale promozionale:</strong> €99,00<br>
-      <strong>Acconto richiesto online:</strong> €50,00<br>
-      <strong>Saldo residuo:</strong> €49,00
-    `;
-  } 
-  else if (servizio === "Manutenzione su guasto") {
-    box.innerHTML = `
-      <div class="price-title">Riepilogo economico</div>
-      <strong>Servizio:</strong> Manutenzione su guasto.<br>
-      <strong>Acconto richiesto online:</strong> €50,00<br>
-      <strong>Vantaggi riservati alla prenotazione web:</strong><br>
-      - 10% di sconto sulla manodopera<br>
-      - 5% di sconto sui ricambi<br>
-      <strong>Nota:</strong> il costo finale dell'intervento sarà definito in base al guasto rilevato.
-    `;
-  } 
-  else if (servizio === "Richiesta sopralluogo") {
-    box.innerHTML = `
-      <div class="price-title">Riepilogo economico</div>
-      <strong>Servizio:</strong> Richiesta sopralluogo.<br>
-      <strong>Costo:</strong> gratuito<br>
-      <strong>Pagamento online:</strong> non richiesto
-    `;
-  } 
-  else {
-    box.innerHTML = `
-      <div class="price-title">Riepilogo economico</div>
-      Seleziona un servizio per visualizzare costi, sconti e condizioni.
-    `;
-  }
-});
-
-async function sendBookingToBackend(payload) {
-  try {
-    const response = await fetch(BACKEND_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    const text = await response.text();
-    return response.ok && text.includes("success");
-  } catch (error) {
-    return false;
-  }
-}
-
-async function prepareBooking() {
-  const comuniCoperti = [
-    "lazzate","misinto","cogliate","ceriano laghetto","solaro","limbiate",
-    "bovisio masciago","cesano maderno","seveso","meda","barlassina",
-    "lentate sul seveso","saronno","rovello porro","rovellasca","turate",
-    "uboldo","gerenzano","caronno pertusella","origgio","lomazzo","cabiate",
-    "mariano comense","giussano","varedo","nova milanese","desio",
-    "senago","garbagnate milanese","cesate","carimate","novedrate",
-    "bregnano","cirimido","cislago","appiano gentile","lurago marinone"
-  ];
-
-  const zoneResult = document.getElementById("zoneResult");
-  const summaryCard = document.getElementById("summaryCard");
-  const summaryBox = document.getElementById("summaryBox");
-  const payButton = document.getElementById("payButton");
-  const confirmButton = document.getElementById("confirmButton");
-  const paymentNote = document.getElementById("paymentNote");
-  const backendStatus = document.getElementById("backendStatus");
-
-  const nome = document.getElementById("nome").value.trim();
-  const cfiva = document.getElementById("cfiva").value.trim();
-  const telefono = document.getElementById("telefono").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const comune = document.getElementById("comune").value.trim();
-  const cap = document.getElementById("cap").value.trim();
-  const indirizzo = document.getElementById("indirizzo").value.trim();
-  const servizio = document.getElementById("servizio").value.trim();
-  const curit = document.getElementById("curit").value.trim();
-  const marca = document.getElementById("marca").value.trim();
-  const modello = document.getElementById("modello").value.trim();
-  const note = document.getElementById("note").value.trim();
-  const consenso = document.getElementById("consenso").checked;
-
-  if (!nome || !cfiva || !telefono || !email || !comune || !indirizzo || !servizio || !consenso) {
-    zoneResult.className = "result ko";
-    zoneResult.textContent = "Compila tutti i campi obbligatori e conferma privacy e condizioni prima di procedere.";
-    summaryCard.classList.add("hidden");
-    return;
+  function normalizeText(str) {
+    return str.toLowerCase().trim();
   }
 
-  const comuneNorm = normalizeText(comune);
+  document.getElementById("servizio").addEventListener("change", function() {
+    const servizio = this.value;
+    const box = document.getElementById("importoBox");
 
-  if (!comuniCoperti.includes(comuneNorm)) {
-    zoneResult.className = "result ko";
-    zoneResult.textContent = "Il comune indicato non risulta nell’area operativa standard. Contattaci prima di procedere.";
-    summaryCard.classList.add("hidden");
-    return;
+    if (servizio === "Manutenzione ordinaria caldaia") {
+      box.innerHTML = `
+        <div class="price-title">Riepilogo economico</div>
+        <strong>Servizio:</strong> Manutenzione ordinaria caldaia con analisi fumi e tariffa CURIT.<br>
+        <strong>Prezzo base:</strong> €110,00<br>
+        <strong>Sconto web 10%:</strong> - €11,00<br>
+        <strong>Totale promozionale:</strong> €99,00<br>
+        <strong>Acconto richiesto online:</strong> €50,00<br>
+        <strong>Saldo residuo:</strong> €49,00
+      `;
+    } 
+    else if (servizio === "Manutenzione su guasto") {
+      box.innerHTML = `
+        <div class="price-title">Riepilogo economico</div>
+        <strong>Servizio:</strong> Manutenzione su guasto.<br>
+        <strong>Acconto richiesto online:</strong> €50,00<br>
+        <strong>Vantaggi riservati alla prenotazione web:</strong><br>
+        - 10% di sconto sulla manodopera<br>
+        - 5% di sconto sui ricambi<br>
+        <strong>Nota:</strong> il costo finale dell'intervento sarà definito in base al guasto rilevato.
+      `;
+    } 
+    else if (servizio === "Richiesta sopralluogo") {
+      box.innerHTML = `
+        <div class="price-title">Riepilogo economico</div>
+        <strong>Servizio:</strong> Richiesta sopralluogo.<br>
+        <strong>Costo:</strong> gratuito<br>
+        <strong>Pagamento online:</strong> non richiesto
+      `;
+    } 
+    else {
+      box.innerHTML = `
+        <div class="price-title">Riepilogo economico</div>
+        Seleziona un servizio per visualizzare costi, sconti e condizioni.
+      `;
+    }
+  });
+
+  async function sendBookingToBackend(payload) {
+    try {
+      const response = await fetch(BACKEND_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload),
+        redirect: "follow"
+      });
+
+      const text = await response.text();
+      console.log("Backend response:", text);
+
+      try {
+        const json = JSON.parse(text);
+        return json.success === true;
+      } catch (parseError) {
+        return text.includes("success") && text.includes("true");
+      }
+
+    } catch (error) {
+      console.error("Errore backend:", error);
+      return false;
+    }
   }
 
-  zoneResult.className = "result ok";
-  zoneResult.textContent = "Comune verificato. Puoi procedere con la richiesta online.";
+  async function prepareBooking() {
+    const comuniCoperti = [
+      "lazzate","misinto","cogliate","ceriano laghetto","solaro","limbiate",
+      "bovisio masciago","cesano maderno","seveso","meda","barlassina",
+      "lentate sul seveso","saronno","rovello porro","rovellasca","turate",
+      "uboldo","gerenzano","caronno pertusella","origgio","lomazzo","cabiate",
+      "mariano comense","giussano","varedo","nova milanese","desio",
+      "senago","garbagnate milanese","cesate","carimate","novedrate",
+      "bregnano","cirimido","cislago","appiano gentile","lurago marinone"
+    ];
 
-  let riepilogoEconomico = "";
+    const zoneResult = document.getElementById("zoneResult");
+    const summaryCard = document.getElementById("summaryCard");
+    const summaryBox = document.getElementById("summaryBox");
+    const payButton = document.getElementById("payButton");
+    const confirmButton = document.getElementById("confirmButton");
+    const paymentNote = document.getElementById("paymentNote");
+    const backendStatus = document.getElementById("backendStatus");
 
-  if (servizio === "Manutenzione ordinaria caldaia") {
-    riepilogoEconomico = `
-      <div class="summary-row"><strong>Prezzo base servizio:</strong> €110,00</div>
-      <div class="summary-row"><strong>Sconto web 10%:</strong> - €11,00</div>
-      <div class="summary-row"><strong>Totale promozionale:</strong> €99,00</div>
-      <div class="summary-row"><strong>Acconto online:</strong> €50,00</div>
-      <div class="summary-row"><strong>Saldo residuo:</strong> €49,00</div>
+    const nome = document.getElementById("nome").value.trim();
+    const cfiva = document.getElementById("cfiva").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const comune = document.getElementById("comune").value.trim();
+    const cap = document.getElementById("cap").value.trim();
+    const indirizzo = document.getElementById("indirizzo").value.trim();
+    const servizio = document.getElementById("servizio").value.trim();
+    const curit = document.getElementById("curit").value.trim();
+    const marca = document.getElementById("marca").value.trim();
+    const modello = document.getElementById("modello").value.trim();
+    const note = document.getElementById("note").value.trim();
+    const consenso = document.getElementById("consenso").checked;
+
+    if (!nome || !cfiva || !telefono || !email || !comune || !indirizzo || !servizio || !consenso) {
+      zoneResult.className = "result ko";
+      zoneResult.textContent = "Compila tutti i campi obbligatori e conferma privacy e condizioni prima di procedere.";
+      summaryCard.classList.add("hidden");
+      return;
+    }
+
+    const comuneNorm = normalizeText(comune);
+
+    if (!comuniCoperti.includes(comuneNorm)) {
+      zoneResult.className = "result ko";
+      zoneResult.textContent = "Il comune indicato non risulta nell’area operativa standard. Contattaci prima di procedere.";
+      summaryCard.classList.add("hidden");
+      return;
+    }
+
+    zoneResult.className = "result ok";
+    zoneResult.textContent = "Comune verificato. Puoi procedere con la richiesta online.";
+
+    let riepilogoEconomico = "";
+
+    if (servizio === "Manutenzione ordinaria caldaia") {
+      riepilogoEconomico = `
+        <div class="summary-row"><strong>Prezzo base servizio:</strong> €110,00</div>
+        <div class="summary-row"><strong>Sconto web 10%:</strong> - €11,00</div>
+        <div class="summary-row"><strong>Totale promozionale:</strong> €99,00</div>
+        <div class="summary-row"><strong>Acconto online:</strong> €50,00</div>
+        <div class="summary-row"><strong>Saldo residuo:</strong> €49,00</div>
+      `;
+      payButton.style.display = "block";
+      paymentNote.innerHTML = "Procedi al pagamento dell’acconto di €50,00. Il totale promozionale del servizio è €99,00, con saldo residuo di €49,00.";
+      confirmButton.innerText = "✔ Ho completato il pagamento";
+      confirmButton.href = "conferma.html";
+    } 
+    else if (servizio === "Manutenzione su guasto") {
+      riepilogoEconomico = `
+        <div class="summary-row"><strong>Acconto online:</strong> €50,00</div>
+        <div class="summary-row"><strong>Sconto manodopera:</strong> 10%</div>
+        <div class="summary-row"><strong>Sconto ricambi:</strong> 5%</div>
+        <div class="summary-row"><strong>Nota:</strong> il costo finale dipenderà dal guasto rilevato.</div>
+      `;
+      payButton.style.display = "block";
+      paymentNote.innerHTML = "Procedi al pagamento dell’acconto di €50,00. L’acconto dà diritto agli sconti web: 10% sulla manodopera e 5% sui ricambi.";
+      confirmButton.innerText = "✔ Ho completato il pagamento";
+      confirmButton.href = "conferma.html";
+    } 
+    else if (servizio === "Richiesta sopralluogo") {
+      riepilogoEconomico = `
+        <div class="summary-row"><strong>Costo servizio:</strong> gratuito</div>
+        <div class="summary-row"><strong>Pagamento online:</strong> non richiesto</div>
+      `;
+      payButton.style.display = "none";
+      paymentNote.innerHTML = "Per il sopralluogo non è richiesto alcun pagamento online. Puoi confermare direttamente la richiesta.";
+      confirmButton.innerText = "✔ Conferma richiesta sopralluogo";
+      confirmButton.href = "conferma_sopralluogo.html";
+    }
+
+    const prenotazione = {
+      nome,
+      cfiva,
+      telefono,
+      email,
+      comune,
+      cap,
+      indirizzo,
+      servizio,
+      curit,
+      marca,
+      modello,
+      note,
+      esitoZona: "Comune verificato"
+    };
+
+    localStorage.setItem("prenotazione_max_impianti", JSON.stringify(prenotazione));
+
+    backendStatus.innerHTML = "Invio richiesta al sistema in corso...";
+
+    const saved = await sendBookingToBackend(prenotazione);
+
+    if (saved) {
+      backendStatus.innerHTML = "✅ Richiesta registrata correttamente.";
+    } else {
+      backendStatus.innerHTML = "⚠️ Richiesta non confermata dal backend. Ti consiglio di contattarci anche telefonicamente o via WhatsApp.";
+    }
+
+    summaryBox.innerHTML = `
+      <div class="summary-row"><strong>Cliente:</strong> ${escapeHtml(nome)}</div>
+      <div class="summary-row"><strong>Codice fiscale / P. IVA:</strong> ${escapeHtml(cfiva)}</div>
+      <div class="summary-row"><strong>Telefono:</strong> ${escapeHtml(telefono)}</div>
+      <div class="summary-row"><strong>Email:</strong> ${escapeHtml(email)}</div>
+      <div class="summary-row"><strong>Comune:</strong> ${escapeHtml(comune)}</div>
+      <div class="summary-row"><strong>CAP:</strong> ${escapeHtml(cap || "-")}</div>
+      <div class="summary-row"><strong>Indirizzo impianto:</strong> ${escapeHtml(indirizzo)}</div>
+      <div class="summary-row"><strong>Servizio richiesto:</strong> ${escapeHtml(servizio)}</div>
+      <div class="summary-row"><strong>Codice CURIT:</strong> ${escapeHtml(curit || "-")}</div>
+      <div class="summary-row"><strong>Marca caldaia:</strong> ${escapeHtml(marca || "-")}</div>
+      <div class="summary-row"><strong>Modello caldaia:</strong> ${escapeHtml(modello || "-")}</div>
+      <div class="summary-row"><strong>Note:</strong> ${escapeHtml(note || "-")}</div>
+      ${riepilogoEconomico}
     `;
-    payButton.style.display = "block";
-    paymentNote.innerHTML = "Procedi al pagamento dell’acconto di €50,00. Il totale promozionale del servizio è €99,00, con saldo residuo di €49,00.";
-    confirmButton.innerText = "✔ Ho completato il pagamento";
-  } 
-  else if (servizio === "Manutenzione su guasto") {
-    riepilogoEconomico = `
-      <div class="summary-row"><strong>Acconto online:</strong> €50,00</div>
-      <div class="summary-row"><strong>Sconto manodopera:</strong> 10%</div>
-      <div class="summary-row"><strong>Sconto ricambi:</strong> 5%</div>
-      <div class="summary-row"><strong>Nota:</strong> il costo finale dipenderà dal guasto rilevato.</div>
-    `;
-    payButton.style.display = "block";
-    paymentNote.innerHTML = "Procedi al pagamento dell’acconto di €50,00. L’acconto dà diritto agli sconti web: 10% sulla manodopera e 5% sui ricambi.";
-    confirmButton.innerText = "✔ Ho completato il pagamento";
-  } 
-  else if (servizio === "Richiesta sopralluogo") {
-    riepilogoEconomico = `
-      <div class="summary-row"><strong>Costo servizio:</strong> gratuito</div>
-      <div class="summary-row"><strong>Pagamento online:</strong> non richiesto</div>
-    `;
-    payButton.style.display = "none";
-    paymentNote.innerHTML = "Per il sopralluogo non è richiesto alcun pagamento online. Puoi confermare direttamente la richiesta.";
-    confirmButton.innerText = "✔ Conferma richiesta sopralluogo";
+
+    summaryCard.classList.remove("hidden");
+    summaryCard.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  const prenotazione = {
-    nome,
-    cfiva,
-    telefono,
-    email,
-    comune,
-    cap,
-    indirizzo,
-    servizio,
-    curit,
-    marca,
-    modello,
-    note,
-    esitoZona: "Comune verificato"
-  };
-
-  localStorage.setItem("prenotazione_max_impianti", JSON.stringify(prenotazione));
-
-  backendStatus.innerHTML = "Invio richiesta al sistema in corso...";
-
-  const saved = await sendBookingToBackend(prenotazione);
-
-  if (saved) {
-    backendStatus.innerHTML = "✅ Richiesta registrata correttamente.";
-  } else {
-    backendStatus.innerHTML = "⚠️ Richiesta non confermata dal backend. Ti consiglio di contattarci anche telefonicamente o via WhatsApp.";
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
   }
-
-  summaryBox.innerHTML = `
-    <div class="summary-row"><strong>Cliente:</strong> ${escapeHtml(nome)}</div>
-    <div class="summary-row"><strong>Codice fiscale / P. IVA:</strong> ${escapeHtml(cfiva)}</div>
-    <div class="summary-row"><strong>Telefono:</strong> ${escapeHtml(telefono)}</div>
-    <div class="summary-row"><strong>Email:</strong> ${escapeHtml(email)}</div>
-    <div class="summary-row"><strong>Comune:</strong> ${escapeHtml(comune)}</div>
-    <div class="summary-row"><strong>CAP:</strong> ${escapeHtml(cap || "-")}</div>
-    <div class="summary-row"><strong>Indirizzo impianto:</strong> ${escapeHtml(indirizzo)}</div>
-    <div class="summary-row"><strong>Servizio richiesto:</strong> ${escapeHtml(servizio)}</div>
-    <div class="summary-row"><strong>Codice CURIT:</strong> ${escapeHtml(curit || "-")}</div>
-    <div class="summary-row"><strong>Marca caldaia:</strong> ${escapeHtml(marca || "-")}</div>
-    <div class="summary-row"><strong>Modello caldaia:</strong> ${escapeHtml(modello || "-")}</div>
-    <div class="summary-row"><strong>Note:</strong> ${escapeHtml(note || "-")}</div>
-    ${riepilogoEconomico}
-  `;
-
-  summaryCard.classList.remove("hidden");
-  summaryCard.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
 </script>
 
 </body>
