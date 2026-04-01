@@ -19,59 +19,71 @@
       --koText:#a32020;
       --gold:#fff4cc;
       --shadow:0 10px 25px rgba(0,0,0,0.10);
-      --radius:14px;
-      --wa:#128C7E;
     }
 
-    *{ box-sizing:border-box; }
-
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:Arial, sans-serif;
+      font-family:Arial, Helvetica, sans-serif;
       background:var(--bg);
       color:var(--text);
     }
 
-    .container{
-      max-width:980px;
-      margin:auto;
-      padding:20px;
+    .wrap{
+      max-width:760px;
+      margin:30px auto;
+      padding:16px;
     }
 
     .card{
       background:var(--card);
-      padding:24px;
-      border-radius:var(--radius);
-      margin-bottom:20px;
+      border-radius:18px;
       box-shadow:var(--shadow);
+      overflow:hidden;
+      border:1px solid var(--line);
     }
 
-    h1,h2,h3{
-      margin-top:0;
+    .head{
+      background:var(--navy);
+      color:#fff;
+      padding:26px 20px;
     }
 
-    .lead{
-      font-size:18px;
-      color:#445;
+    .head h1{
+      margin:0 0 8px;
+      font-size:28px;
+    }
+
+    .head p{
+      margin:0;
+      opacity:.95;
       line-height:1.5;
     }
 
-    .muted{
-      color:var(--muted);
-      line-height:1.55;
+    .body{
+      padding:22px;
     }
 
-    .highlight{
+    .info{
       background:var(--gold);
+      border:1px solid #eadf9d;
+      padding:14px 16px;
+      border-radius:12px;
+      margin-bottom:18px;
+      line-height:1.5;
     }
 
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:14px;
+      gap:16px;
     }
 
-    .full{
+    .field{
+      margin-bottom:16px;
+    }
+
+    .field.full{
       grid-column:1 / -1;
     }
 
@@ -79,15 +91,15 @@
       display:block;
       font-weight:bold;
       margin-bottom:6px;
+      font-size:14px;
     }
 
     input, select, textarea{
       width:100%;
-      padding:14px;
-      border:1px solid #cfd8dc;
+      border:1px solid var(--line);
       border-radius:10px;
-      font-size:16px;
-      font-family:inherit;
+      padding:12px 12px;
+      font-size:15px;
       background:#fff;
     }
 
@@ -96,151 +108,82 @@
       resize:vertical;
     }
 
-    .btn{
-      display:inline-block;
-      text-align:center;
-      padding:15px 18px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:bold;
-      border:none;
-      cursor:pointer;
-      font-size:16px;
+    .hint{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:5px;
     }
 
-    .btn-primary{
-      background:var(--navy);
-      color:#fff;
+    .radio-group{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      padding:8px 0 2px;
     }
 
-    .btn-secondary{
-      background:#eee;
-      color:var(--navy);
+    .radio-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:15px;
     }
 
-    .btn-pay{
-      background:var(--wa);
-      color:#fff;
-      width:100%;
-      padding:18px;
-      font-size:18px;
-      display:block;
-      text-align:center;
-      text-decoration:none;
-      border-radius:10px;
-      font-weight:bold;
-    }
-
-    .btn-confirm{
-      background:var(--navy);
-      color:#fff;
-      width:100%;
-      padding:16px;
-      font-size:17px;
-      display:block;
-      text-align:center;
-      text-decoration:none;
-      border-radius:10px;
-      font-weight:bold;
-      margin-top:10px;
+    .radio-item input{
+      width:auto;
+      margin:0;
     }
 
     .actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .result{
       margin-top:12px;
-      padding:12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    button{
+      background:var(--navy);
+      color:#fff;
+      border:none;
       border-radius:10px;
+      padding:13px 20px;
+      font-size:15px;
       font-weight:bold;
+      cursor:pointer;
+    }
+
+    button:disabled{
+      opacity:.65;
+      cursor:not-allowed;
+    }
+
+    .status{
+      margin-top:16px;
+      padding:14px 16px;
+      border-radius:12px;
       display:none;
-    }
-
-    .result.ok{
-      display:block;
-      background:var(--okBg);
-      color:var(--okText);
-    }
-
-    .result.ko{
-      display:block;
-      background:var(--koBg);
-      color:var(--koText);
-    }
-
-    .note{
-      font-size:14px;
-      color:var(--muted);
       line-height:1.5;
     }
 
-    .summary{
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:16px;
-      background:#fafcfd;
+    .status.ok{
+      display:block;
+      background:var(--okBg);
+      color:var(--okText);
+      border:1px solid #bfe1c8;
     }
 
-    .summary-row{
-      padding:8px 0;
-      border-bottom:1px solid #e7eef2;
+    .status.ko{
+      display:block;
+      background:var(--koBg);
+      color:var(--koText);
+      border:1px solid #f1c1c1;
     }
 
-    .summary-row:last-child{
-      border-bottom:none;
-    }
-
-    .hidden{
-      display:none;
-    }
-
-    .checkbox{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      margin-top:6px;
-    }
-
-    .checkbox input{
-      width:auto;
-      margin-top:4px;
-      transform:scale(1.15);
-    }
-
-    .top-link{
-      display:inline-block;
-      margin-bottom:14px;
-      color:var(--navy);
-      text-decoration:none;
-      font-weight:bold;
-    }
-
-    .small-link{
-      color:var(--navy);
-      text-decoration:underline;
-    }
-
-    .price-box{
-      margin-top:12px;
-      padding:16px;
-      border-radius:12px;
-      border:1px solid #d9e3e8;
-      background:#f9fbfc;
-      line-height:1.6;
-    }
-
-    .price-box strong{
-      color:var(--navy);
-    }
-
-    .price-title{
-      font-weight:bold;
-      margin-bottom:8px;
-      color:var(--navy);
+    .footer-note{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
     }
 
     @media (max-width: 700px){
@@ -251,391 +194,171 @@
   </style>
 </head>
 <body>
-
-<div class="container">
-
-  <div class="card">
-    <a href="offerte.html" class="top-link">← Torna alla pagina offerte</a>
-    <h1>Prenotazione online manutenzione</h1>
-    <p class="lead">
-      Compila il form per richiedere la prenotazione online del servizio.
-      In base al servizio selezionato vedrai il riepilogo economico e,
-      se previsto, potrai procedere al pagamento dell’acconto.
-    </p>
-    <p class="muted">
-      Offerta valida per le zone operative entro circa <strong>20 km da Lazzate</strong>.
-    </p>
-  </div>
-
-  <div class="card highlight">
-    <h2>Condizioni sintetiche</h2>
-    <p class="muted">
-      La promozione web prevede condizioni dedicate in base al servizio richiesto.
-      Seleziona il tipo di servizio nel form per visualizzare il dettaglio economico.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>Dati cliente e caldaia</h2>
-
-    <form id="bookingForm">
-      <div class="grid">
-        <div>
-          <label for="nome">Nome e cognome / Ragione sociale *</label>
-          <input id="nome" name="nome" required>
-        </div>
-
-        <div>
-          <label for="cfiva">Codice fiscale / P. IVA *</label>
-          <input id="cfiva" name="cfiva" required>
-        </div>
-
-        <div>
-          <label for="telefono">Telefono *</label>
-          <input id="telefono" name="telefono" required>
-        </div>
-
-        <div>
-          <label for="email">Email *</label>
-          <input id="email" name="email" type="email" required>
-        </div>
-
-        <div>
-          <label for="comune">Comune *</label>
-          <input id="comune" name="comune" placeholder="Es. Saronno" required>
-        </div>
-
-        <div>
-          <label for="cap">CAP</label>
-          <input id="cap" name="cap" placeholder="Es. 21047">
-        </div>
-
-        <div class="full">
-          <label for="indirizzo">Indirizzo impianto *</label>
-          <input id="indirizzo" name="indirizzo" placeholder="Via, numero civico" required>
-        </div>
-
-        <div>
-          <label for="servizio">Servizio richiesto *</label>
-          <select id="servizio" name="servizio" required>
-            <option value="">Seleziona</option>
-            <option>Manutenzione ordinaria caldaia</option>
-            <option>Manutenzione su guasto</option>
-            <option>Richiesta sopralluogo</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="curit">Codice CURIT / Tracciabilità impianto</label>
-          <input id="curit" name="curit">
-        </div>
-
-        <div>
-          <label for="marca">Marca caldaia</label>
-          <input id="marca" name="marca">
-        </div>
-
-        <div>
-          <label for="modello">Modello caldaia</label>
-          <input id="modello" name="modello">
-        </div>
-
-        <div class="full">
-          <label for="note">Note utili</label>
-          <textarea id="note" name="note" placeholder="Descrivi eventuali dettagli utili"></textarea>
-        </div>
-
-        <div class="full">
-          <div id="importoBox" class="price-box">
-            <div class="price-title">Riepilogo economico</div>
-            Seleziona un servizio per visualizzare costi, sconti e condizioni.
-          </div>
-        </div>
-
-        <div class="full">
-          <div class="checkbox">
-            <input type="checkbox" id="consenso" required>
-            <label for="consenso" style="font-weight:normal; margin:0;">
-              Dichiaro di aver letto e accettato la
-              <a href="privacy.html" target="_blank" class="small-link">privacy</a>
-              e le
-              <a href="condizioni.html" target="_blank" class="small-link">condizioni generali</a>. *
-            </label>
-          </div>
-        </div>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">
+        <h1>Prenotazione online</h1>
+        <p>Richiedi assistenza o sopralluogo per climatizzazione e impianti. Ti ricontatteremo nel più breve tempo possibile.</p>
       </div>
 
-      <div class="actions">
-        <button type="button" class="btn btn-primary" onclick="prepareBooking()">
-          Verifica dati e procedi
-        </button>
-        <a href="offerte.html" class="btn btn-secondary">Annulla</a>
+      <div class="body">
+        <div class="info">
+          Compila il modulo. In base al contatto preferito riceverai una conferma via <strong>email</strong> oppure sarai ricontattato via <strong>WhatsApp</strong>.
+        </div>
+
+        <form id="bookingForm">
+          <div class="grid">
+            <div class="field">
+              <label for="nome">Nome e cognome *</label>
+              <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="field">
+              <label for="citta">Città / Zona *</label>
+              <input type="text" id="citta" name="citta" required>
+            </div>
+
+            <div class="field">
+              <label for="servizio">Servizio richiesto *</label>
+              <select id="servizio" name="servizio" required>
+                <option value="">Seleziona...</option>
+                <option value="Assistenza climatizzatore">Assistenza climatizzatore</option>
+                <option value="Installazione climatizzatore">Installazione climatizzatore</option>
+                <option value="Manutenzione climatizzatore">Manutenzione climatizzatore</option>
+                <option value="Sopralluogo tecnico">Sopralluogo tecnico</option>
+                <option value="Altro">Altro</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="dataPreferita">Data preferita</label>
+              <input type="date" id="dataPreferita" name="dataPreferita">
+            </div>
+
+            <div class="field full">
+              <label>Contatto preferito *</label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="preferenzaContatto" value="email" checked>
+                  Email
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="preferenzaContatto" value="whatsapp">
+                  WhatsApp
+                </label>
+              </div>
+            </div>
+
+            <div class="field" id="emailField">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="esempio@email.it">
+              <div class="hint">Obbligatoria se scegli Email.</div>
+            </div>
+
+            <div class="field" id="telefonoField">
+              <label for="telefono">Telefono / WhatsApp</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+39 333 1234567">
+              <div class="hint">Obbligatorio se scegli WhatsApp.</div>
+            </div>
+
+            <div class="field full">
+              <label for="messaggio">Messaggio</label>
+              <textarea id="messaggio" name="messaggio" placeholder="Descrivi brevemente la richiesta..."></textarea>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" id="submitBtn">Invia prenotazione</button>
+            <span id="loadingText" style="display:none;">Invio in corso...</span>
+          </div>
+
+          <div id="statusBox" class="status"></div>
+
+          <div class="footer-note">
+            I dati inviati saranno usati esclusivamente per gestire la tua richiesta di prenotazione o assistenza.
+          </div>
+        </form>
       </div>
-
-      <div id="zoneResult" class="result"></div>
-    </form>
+    </div>
   </div>
 
-  <div id="summaryCard" class="card hidden">
-    <h2>Riepilogo prenotazione</h2>
+  <script>
+    const form = document.getElementById('bookingForm');
+    const statusBox = document.getElementById('statusBox');
+    const submitBtn = document.getElementById('submitBtn');
+    const loadingText = document.getElementById('loadingText');
+    const emailInput = document.getElementById('email');
+    const telefonoInput = document.getElementById('telefono');
 
-    <div class="summary" id="summaryBox"></div>
-
-    <p id="backendStatus" class="note" style="margin-top:14px;">
-      Preparazione richiesta in corso.
-    </p>
-
-    <p id="paymentNote" class="note" style="margin-top:14px;">
-      Dopo il pagamento torna sul sito e premi il pulsante di conferma qui sotto.
-    </p>
-
-    <a
-      id="payButton"
-      href="https://mypos.com/@max-impianti"
-      target="_blank"
-      rel="noopener"
-      class="btn-pay">
-      💳 Paga acconto €50 e conferma prenotazione
-    </a>
-
-    <a
-      href="conferma.html"
-      id="confirmButton"
-      class="btn-confirm">
-      ✔ Ho completato il pagamento
-    </a>
-  </div>
-
-</div>
-
-<script>
-  const BACKEND_URL = "https://script.google.com/macros/s/AKfycbxuIlt6bKxic_rFrLmztFcaC2kIbVS1WaZpGoHhFEvn3TvG7JI--LWcU7VxkU7GuurL/exec";
-
-  function normalizeText(str) {
-    return str.toLowerCase().trim();
-  }
-
-  document.getElementById("servizio").addEventListener("change", function() {
-    const servizio = this.value;
-    const box = document.getElementById("importoBox");
-
-    if (servizio === "Manutenzione ordinaria caldaia") {
-      box.innerHTML = `
-        <div class="price-title">Riepilogo economico</div>
-        <strong>Servizio:</strong> Manutenzione ordinaria caldaia con analisi fumi e tariffa CURIT.<br>
-        <strong>Prezzo base:</strong> €110,00<br>
-        <strong>Sconto web 10%:</strong> - €11,00<br>
-        <strong>Totale promozionale:</strong> €99,00<br>
-        <strong>Acconto richiesto online:</strong> €50,00<br>
-        <strong>Saldo residuo:</strong> €49,00
-      `;
-    } else if (servizio === "Manutenzione su guasto") {
-      box.innerHTML = `
-        <div class="price-title">Riepilogo economico</div>
-        <strong>Servizio:</strong> Manutenzione su guasto.<br>
-        <strong>Acconto richiesto online:</strong> €50,00<br>
-        <strong>Vantaggi riservati alla prenotazione web:</strong><br>
-        - 10% di sconto sulla manodopera<br>
-        - 5% di sconto sui ricambi<br>
-        <strong>Nota:</strong> il costo finale dell'intervento sarà definito in base al guasto rilevato.
-      `;
-    } else if (servizio === "Richiesta sopralluogo") {
-      box.innerHTML = `
-        <div class="price-title">Riepilogo economico</div>
-        <strong>Servizio:</strong> Richiesta sopralluogo.<br>
-        <strong>Costo:</strong> gratuito<br>
-        <strong>Pagamento online:</strong> non richiesto
-      `;
-    } else {
-      box.innerHTML = `
-        <div class="price-title">Riepilogo economico</div>
-        Seleziona un servizio per visualizzare costi, sconti e condizioni.
-      `;
+    function getPreferenza() {
+      return document.querySelector('input[name="preferenzaContatto"]:checked')?.value || 'email';
     }
-  });
 
-  async function sendBookingToBackend(payload) {
-    try {
-      const formData = new URLSearchParams();
+    function updateRequiredFields() {
+      const pref = getPreferenza();
 
-      Object.keys(payload).forEach(key => {
-        formData.append(key, payload[key] || "");
-      });
+      if (pref === 'email') {
+        emailInput.required = true;
+        telefonoInput.required = false;
+      } else {
+        emailInput.required = false;
+        telefonoInput.required = true;
+      }
+    }
 
-      const response = await fetch(BACKEND_URL, {
-        method: "POST",
-        body: formData
-      });
+    document.querySelectorAll('input[name="preferenzaContatto"]').forEach(radio => {
+      radio.addEventListener('change', updateRequiredFields);
+    });
 
-      const text = await response.text();
+    updateRequiredFields();
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      statusBox.className = 'status';
+      statusBox.style.display = 'none';
+      statusBox.textContent = '';
+
+      updateRequiredFields();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      submitBtn.disabled = true;
+      loadingText.style.display = 'inline';
 
       try {
-        return JSON.parse(text);
-      } catch {
-        return {
-          success: false,
-          error: "Risposta backend non valida: " + text
-        };
+        const response = await fetch('TUO_URL_WEBAPP_APPS_SCRIPT', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          }
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          statusBox.className = 'status ok';
+          statusBox.textContent = result.message || 'Richiesta inviata correttamente.';
+          statusBox.style.display = 'block';
+          form.reset();
+          updateRequiredFields();
+        } else {
+          statusBox.className = 'status ko';
+          statusBox.textContent = result.message || 'Errore durante l’invio.';
+          statusBox.style.display = 'block';
+        }
+
+      } catch (err) {
+        statusBox.className = 'status ko';
+        statusBox.textContent = 'Errore di connessione o risposta non valida dal server.';
+        statusBox.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        loadingText.style.display = 'none';
       }
-
-    } catch (error) {
-      console.error("Errore backend:", error);
-      return {
-        success: false,
-        error: String(error)
-      };
-    }
-  }
-
-  async function prepareBooking() {
-    const comuniCoperti = [
-      "lazzate","misinto","cogliate","ceriano laghetto","solaro","limbiate",
-      "bovisio masciago","cesano maderno","seveso","meda","barlassina",
-      "lentate sul seveso","saronno","rovello porro","rovellasca","turate",
-      "uboldo","gerenzano","caronno pertusella","origgio","lomazzo","cabiate",
-      "mariano comense","giussano","varedo","nova milanese","desio",
-      "senago","garbagnate milanese","cesate","carimate","novedrate",
-      "bregnano","cirimido","cislago","appiano gentile","lurago marinone"
-    ];
-
-    const zoneResult = document.getElementById("zoneResult");
-    const summaryCard = document.getElementById("summaryCard");
-    const summaryBox = document.getElementById("summaryBox");
-    const payButton = document.getElementById("payButton");
-    const confirmButton = document.getElementById("confirmButton");
-    const paymentNote = document.getElementById("paymentNote");
-    const backendStatus = document.getElementById("backendStatus");
-
-    const nome = document.getElementById("nome").value.trim();
-    const cfiva = document.getElementById("cfiva").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const comune = document.getElementById("comune").value.trim();
-    const cap = document.getElementById("cap").value.trim();
-    const indirizzo = document.getElementById("indirizzo").value.trim();
-    const servizio = document.getElementById("servizio").value.trim();
-    const curit = document.getElementById("curit").value.trim();
-    const marca = document.getElementById("marca").value.trim();
-    const modello = document.getElementById("modello").value.trim();
-    const note = document.getElementById("note").value.trim();
-    const consenso = document.getElementById("consenso").checked;
-
-    if (!nome || !cfiva || !telefono || !email || !comune || !indirizzo || !servizio || !consenso) {
-      zoneResult.className = "result ko";
-      zoneResult.textContent = "Compila tutti i campi obbligatori e conferma privacy e condizioni prima di procedere.";
-      summaryCard.classList.add("hidden");
-      return;
-    }
-
-    const comuneNorm = normalizeText(comune);
-
-    if (!comuniCoperti.includes(comuneNorm)) {
-      zoneResult.className = "result ko";
-      zoneResult.textContent = "Il comune indicato non risulta nell’area operativa standard. Contattaci prima di procedere.";
-      summaryCard.classList.add("hidden");
-      return;
-    }
-
-    zoneResult.className = "result ok";
-    zoneResult.textContent = "Comune verificato. Puoi procedere con la richiesta online.";
-
-    let riepilogoEconomico = "";
-
-    if (servizio === "Manutenzione ordinaria caldaia") {
-      riepilogoEconomico = `
-        <div class="summary-row"><strong>Prezzo base servizio:</strong> €110,00</div>
-        <div class="summary-row"><strong>Sconto web 10%:</strong> - €11,00</div>
-        <div class="summary-row"><strong>Totale promozionale:</strong> €99,00</div>
-        <div class="summary-row"><strong>Acconto online:</strong> €50,00</div>
-        <div class="summary-row"><strong>Saldo residuo:</strong> €49,00</div>
-      `;
-      payButton.style.display = "block";
-      paymentNote.innerHTML = "Procedi al pagamento dell’acconto di €50,00. Il totale promozionale del servizio è €99,00, con saldo residuo di €49,00.";
-      confirmButton.innerText = "✔ Ho completato il pagamento";
-      confirmButton.href = "conferma.html";
-    } else if (servizio === "Manutenzione su guasto") {
-      riepilogoEconomico = `
-        <div class="summary-row"><strong>Acconto online:</strong> €50,00</div>
-        <div class="summary-row"><strong>Sconto manodopera:</strong> 10%</div>
-        <div class="summary-row"><strong>Sconto ricambi:</strong> 5%</div>
-        <div class="summary-row"><strong>Nota:</strong> il costo finale dipenderà dal guasto rilevato.</div>
-      `;
-      payButton.style.display = "block";
-      paymentNote.innerHTML = "Procedi al pagamento dell’acconto di €50,00. L’acconto dà diritto agli sconti web: 10% sulla manodopera e 5% sui ricambi.";
-      confirmButton.innerText = "✔ Ho completato il pagamento";
-      confirmButton.href = "conferma.html";
-    } else if (servizio === "Richiesta sopralluogo") {
-      riepilogoEconomico = `
-        <div class="summary-row"><strong>Costo servizio:</strong> gratuito</div>
-        <div class="summary-row"><strong>Pagamento online:</strong> non richiesto</div>
-      `;
-      payButton.style.display = "none";
-      paymentNote.innerHTML = "Per il sopralluogo non è richiesto alcun pagamento online. Puoi confermare direttamente la richiesta.";
-      confirmButton.innerText = "✔ Conferma richiesta sopralluogo";
-      confirmButton.href = "conferma_sopralluogo.html";
-    }
-
-    const prenotazione = {
-      nome,
-      cfiva,
-      telefono,
-      email,
-      comune,
-      cap,
-      indirizzo,
-      servizio,
-      curit,
-      marca,
-      modello,
-      note,
-      esitoZona: "Comune verificato"
-    };
-
-    localStorage.setItem("prenotazione_max_impianti", JSON.stringify(prenotazione));
-
-    backendStatus.innerHTML = "Invio richiesta al sistema in corso...";
-
-    const result = await sendBookingToBackend(prenotazione);
-
-    if (result.success) {
-      backendStatus.innerHTML =
-        "✅ Richiesta inviata correttamente.<br>" +
-        "Stato email: <strong>" + escapeHtml(result.mailStatus || "non disponibile") + "</strong>";
-    } else {
-      backendStatus.innerHTML =
-        "⚠️ Errore invio.<br>" +
-        "Dettaglio: <strong>" + escapeHtml(result.error || "sconosciuto") + "</strong>";
-    }
-
-    summaryBox.innerHTML = `
-      <div class="summary-row"><strong>Cliente:</strong> ${escapeHtml(nome)}</div>
-      <div class="summary-row"><strong>Codice fiscale / P. IVA:</strong> ${escapeHtml(cfiva)}</div>
-      <div class="summary-row"><strong>Telefono:</strong> ${escapeHtml(telefono)}</div>
-      <div class="summary-row"><strong>Email:</strong> ${escapeHtml(email)}</div>
-      <div class="summary-row"><strong>Comune:</strong> ${escapeHtml(comune)}</div>
-      <div class="summary-row"><strong>CAP:</strong> ${escapeHtml(cap || "-")}</div>
-      <div class="summary-row"><strong>Indirizzo impianto:</strong> ${escapeHtml(indirizzo)}</div>
-      <div class="summary-row"><strong>Servizio richiesto:</strong> ${escapeHtml(servizio)}</div>
-      <div class="summary-row"><strong>Codice CURIT:</strong> ${escapeHtml(curit || "-")}</div>
-      <div class="summary-row"><strong>Marca caldaia:</strong> ${escapeHtml(marca || "-")}</div>
-      <div class="summary-row"><strong>Modello caldaia:</strong> ${escapeHtml(modello || "-")}</div>
-      <div class="summary-row"><strong>Note:</strong> ${escapeHtml(note || "-")}</div>
-      ${riepilogoEconomico}
-    `;
-
-    summaryCard.classList.remove("hidden");
-    summaryCard.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function escapeHtml(str) {
-    return String(str)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-</script>
-
+    });
+  </script>
 </body>
 </html>
